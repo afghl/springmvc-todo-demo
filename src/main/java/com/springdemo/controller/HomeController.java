@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/hello")
 public class HomeController {
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home(ModelMap model) {
         System.out.println("goto HomeController....");
         return "test";

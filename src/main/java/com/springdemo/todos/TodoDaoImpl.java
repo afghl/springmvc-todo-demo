@@ -26,4 +26,22 @@ public class TodoDaoImpl implements TodoDao {
         List<Todo> todos = template.query(sql, new TodoMapper());
         return todos;
     }
+
+    public Todo findTodo(int id) {
+        String sql = "select * from todos where id = ?";
+        return template.queryForObject(sql, new TodoMapper(), id);
+    }
+
+    public void addTodo(Todo todo) {
+//        TODO
+        String sql = "insert into todos value(?, ?, ?)";
+    }
+
+    public void deleteTodo(int id) {
+
+    }
+
+    public void updateTodo(Todo todo) {
+
+    }
 }

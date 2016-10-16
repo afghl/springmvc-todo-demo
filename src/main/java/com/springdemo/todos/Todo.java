@@ -40,6 +40,6 @@ public class Todo {
 
     @Override
     public String toString() {
-        return "content is" + content + ", and state is :" + status;
+        return "content is : " + content + ", and state is : " + status;
     }
 }

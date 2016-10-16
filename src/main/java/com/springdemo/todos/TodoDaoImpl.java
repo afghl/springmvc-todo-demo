@@ -1,6 +1,7 @@
 package com.springdemo.todos;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.util.List;
@@ -8,7 +9,10 @@ import java.util.List;
 /**
  * Created by afghl on 16/10/15.
  */
+
+@Repository(value = "todoDao")
 public class TodoDaoImpl implements TodoDao {
+
     private DataSource dataSource;
     private JdbcTemplate template;
 

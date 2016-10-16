@@ -1,5 +1,6 @@
 package com.springdemo.controller;
 
+import com.springdemo.todos.RecordNotFoundException;
 import com.springdemo.todos.Todo;
 import com.springdemo.todos.TodoDao;
 import com.springdemo.todos.TodoDaoImpl;
@@ -40,9 +41,18 @@ public class TodoController {
     @RequestMapping("/{id}")
     public String show(@PathVariable(value = "id") String idStr, Model model) {
         int id = Integer.parseInt(idStr);
-        Todo todo = todoDao.findTodo(id);
+        Todo todo = null;
+        try {
+            todo = todoDao.findTodo(id);
+        } catch (RecordNotFoundException e) {
+            e.printStackTrace();
+            return "static/404";
+        }
+
         model.addAttribute("todo", todo);
         return "todo/show";
     }
+
+
 
 }

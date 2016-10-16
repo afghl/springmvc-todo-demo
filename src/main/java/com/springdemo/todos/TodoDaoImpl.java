@@ -27,9 +27,15 @@ public class TodoDaoImpl implements TodoDao {
         return todos;
     }
 
-    public Todo findTodo(int id) {
+    public Todo findTodo(int id) throws RecordNotFoundException {
         String sql = "select * from todos where id = ?";
-        return template.queryForObject(sql, new TodoMapper(), id);
+        try {
+            return template.queryForObject(sql, new TodoMapper(), id);
+        } catch (org.springframework.dao.EmptyResultDataAccessException e) {
+            e.printStackTrace();
+            throw new RecordNotFoundException();
+        }
+
     }
 
     public void addTodo(Todo todo) {

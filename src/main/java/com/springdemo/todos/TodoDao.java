@@ -8,7 +8,7 @@ import java.util.List;
 public interface TodoDao {
     List<Todo> findAll();
 
-    Todo findTodo(int id);
+    Todo findTodo(int id) throws RecordNotFoundException;
 
     void addTodo(Todo todo);
 

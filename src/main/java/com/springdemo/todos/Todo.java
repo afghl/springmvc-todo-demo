@@ -26,6 +26,18 @@ public class Todo {
         this.status = status;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
     @Override
     public String toString() {
         return "content is" + content + ", and state is :" + status;

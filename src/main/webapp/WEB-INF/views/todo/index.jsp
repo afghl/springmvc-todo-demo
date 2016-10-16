@@ -5,6 +5,7 @@
 
 <html>
 <head>
+    <meta charset="utf-8">
     <title>todo index</title>
 </head>
 <body>
@@ -15,8 +16,8 @@
 <table border="1">
     <tr>
         <td>id</td>
-        <td>name</td>
-        <td>age</td>
+        <td>content</td>
+        <td>status</td>
         <td>操作</td>
     </tr>
 
@@ -32,5 +33,11 @@
         </tr>
     </c:forEach>
 </table>
+
+<h2>新增一个</h2>
+<form action="/todos" method="post">
+    <input type="text" name="content"/>
+    <input type="submit" value="新增！">
+</form>
 </body>
 </html>

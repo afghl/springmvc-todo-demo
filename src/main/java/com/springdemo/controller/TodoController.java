@@ -12,6 +12,7 @@ import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import javax.ws.rs.Path;
@@ -30,7 +31,7 @@ public class TodoController {
     @Resource(name = "todoDao")
     private TodoDao todoDao;
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public String index(Model model) {
 
         List<Todo> todos = todoDao.findAll();
@@ -52,6 +53,16 @@ public class TodoController {
         model.addAttribute("todo", todo);
         return "todo/show";
     }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public String create(@RequestParam String content) {
+        Todo t = new Todo();
+        t.setContent(content);
+        todoDao.addTodo(t);
+        return "redirect:/todos";
+    }
+
+
 
 
 

@@ -12,6 +12,7 @@ import java.sql.SQLException;
 public class TodoMapper implements RowMapper<Todo> {
     public Todo mapRow(ResultSet rs, int i) throws SQLException {
         Todo todo = new Todo();
+        todo.setId(rs.getInt("id"));
         todo.setStatus(rs.getInt("status"));
         todo.setContent(rs.getString("content"));
         return todo;

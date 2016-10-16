@@ -39,8 +39,8 @@ public class TodoDaoImpl implements TodoDao {
     }
 
     public void addTodo(Todo todo) {
-//        TODO
-        String sql = "insert into todos value(?, ?, ?)";
+        String sql = "insert into todos (content, status) value(?, ?)";
+        template.update(sql, todo.getContent(), todo.getStatus());
     }
 
     public void deleteTodo(int id) {

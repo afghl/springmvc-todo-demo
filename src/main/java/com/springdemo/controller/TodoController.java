@@ -42,16 +42,14 @@ public class TodoController {
     @RequestMapping("/{id}")
     public String show(@PathVariable(value = "id") String idStr, Model model) {
         int id = Integer.parseInt(idStr);
-        Todo todo = null;
         try {
-            todo = todoDao.findTodo(id);
+            Todo todo = todoDao.findTodo(id);
+            model.addAttribute("todo", todo);
+            return "todo/show";
         } catch (RecordNotFoundException e) {
             e.printStackTrace();
             return "static/404";
         }
-
-        model.addAttribute("todo", todo);
-        return "todo/show";
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -59,6 +57,14 @@ public class TodoController {
         Todo t = new Todo();
         t.setContent(content);
         todoDao.addTodo(t);
+        return "redirect:/todos";
+    }
+
+    @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
+    public String delete(@PathVariable(value = "id") String idStr) {
+        System.out.println("match delete methods...");
+        int id = Integer.parseInt(idStr);
+        todoDao.deleteTodo(id);
         return "redirect:/todos";
     }
 

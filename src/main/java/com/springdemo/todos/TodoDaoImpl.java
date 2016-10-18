@@ -44,7 +44,8 @@ public class TodoDaoImpl implements TodoDao {
     }
 
     public void deleteTodo(int id) {
-
+        String sql = "DELETE from todos where id = ?";
+        template.update(sql, id);
     }
 
     public void updateTodo(Todo todo) {

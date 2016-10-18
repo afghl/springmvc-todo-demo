@@ -24,11 +24,11 @@
     <c:forEach items="${todos}" var="todo">
         <tr>
             <td>${todo.id}</td>
-            <td>${todo.getContent()}</td>
+            <td>${todo.content}</td>
             <td>${todo.status}</td>
             <td>
                 <a href="#">修改</a>
-                <a href="#">删除</a>
+                <a href="/todos/${todo.id}/delete">删除</a>
             </td>
         </tr>
     </c:forEach>

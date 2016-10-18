@@ -62,14 +62,9 @@ public class TodoController {
 
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
     public String delete(@PathVariable(value = "id") String idStr) {
-        System.out.println("match delete methods...");
         int id = Integer.parseInt(idStr);
         todoDao.deleteTodo(id);
         return "redirect:/todos";
     }
-
-
-
-
 
 }
